@@ -83,10 +83,10 @@
             document.getElementById('score').innerHTML = `你赢的次数: ${playerWins}，电脑赢的次数: ${computerWins}`;
 
             if (playerWins === 2) {
-                document.getElementById('result').innerHTML += '<br>恭喜你赢得了三局两胜的比赛！你真是石头剪刀布大师！';
+                document.getElementById('result').innerHTML += '<br>恭喜你赢得了三局两胜的比赛！你真是石头剪刀布大师！<button onclick="resetGame()">再来一次</button>';
                 disableButtons();
             } else if (computerWins === 2) {
-                document.getElementById('result').innerHTML += '<br>电脑赢得了三局两胜的比赛。别气馁，下次你一定能赢回来！';
+                document.getElementById('result').innerHTML += '<br>电脑赢得了三局两胜的比赛。别气馁，下次你一定能赢回来！<button onclick="resetGame()">再来一次</button>';
                 disableButtons();
             }
         }
@@ -95,6 +95,18 @@
             const buttons = document.querySelectorAll('button');
             buttons.forEach(button => {
                 button.disabled = true;
+            });
+        }
+
+        function resetGame() {
+            playerWins = 0;
+            computerWins = 0;
+            round = 0;
+            document.getElementById('result').innerHTML = '';
+            document.getElementById('score').innerHTML = '';
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.disabled = false;
             });
         }
     </script>
