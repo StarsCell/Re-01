@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh - CN">
+
+<head>
+    <meta charset="UTF - 8">
+    <meta name="viewport" content="width=device - width, initial - scale = 1.0">
+    <title>石头剪刀布游戏 - 三局两胜</title>
+    <style>
+        body {
+            font - family: Arial, sans - serif;
+            text - align: center;
+            padding: 20px;
+            background - color: #f4f4f4;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        button {
+            padding: 15px 30px;
+            font - size: 16px;
+            background - color: #007BFF;
+            color: white;
+            border: none;
+            border - radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+            transition: background - color 0.3s ease;
+        }
+
+        button:hover {
+            background - color: #0056b3;
+        }
+
+        #result {
+            font - size: 20px;
+            margin - top: 20px;
+        }
+
+        #score {
+            font - size: 20px;
+            margin - top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>石头剪刀布游戏 - 三局两胜</h1>
+    <p>请选择你的手势：</p>
+    <button onclick="playGame('rock')">石头</button>
+    <button onclick="playGame('paper')">剪刀</button>
+    <button onclick="playGame('scissors')">布</button>
+    <div id="result"></div>
+    <div id="score"></div>
+
+    <script>
+        let playerWins = 0;
+        let computerWins = 0;
+        let round = 0;
+
+        function playGame(playerChoice) {
+            const choices = ['rock', 'paper','scissors'];
+            const computerChoice = choices[Math.floor(Math.random() * 3)];
+            let resultText;
+
+            if (playerChoice === computerChoice) {
+                resultText = `平局！你和电脑都选择了 ${playerChoice}。`;
+            } else if (
+                (playerChoice === 'rock' && computerChoice ==='scissors') ||
+                (playerChoice === 'paper' && computerChoice === 'rock') ||
+                (playerChoice ==='scissors' && computerChoice === 'paper')
+            ) {
+                playerWins++;
+                resultText = `你赢了！你选择了 ${playerChoice}，电脑选择了 ${computerChoice}。`;
+            } else {
+                computerWins++;
+                resultText = `你输了！你选择了 ${playerChoice}，电脑选择了 ${computerChoice}。`;
+            }
+
+            round++;
+            document.getElementById('result').innerHTML = resultText;
+            document.getElementById('score').innerHTML = `你赢的次数: ${playerWins}，电脑赢的次数: ${computerWins}`;
+
+            if (round === 3) {
+                if (playerWins > computerWins) {
+                    document.getElementById('result').innerHTML += '<br>你赢得了三局两胜的比赛！';
+                } else if (playerWins < computerWins) {
+                    document.getElementById('result').innerHTML += '<br>电脑赢得了三局两胜的比赛！';
+                } else {
+                    document.getElementById('result').innerHTML += '<br>比赛平局，重新开始！';
+                    playerWins = 0;
+                    computerWins = 0;
+                    round = 0;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
