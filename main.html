@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh - CN">
+
+<head>
+    <meta charset="UTF - 8">
+    <meta name="viewport" content="width=device - width, initial - scale = 1.0, maximum - scale = 1.0, user - scalable = no">
+    <title>游戏集</title>
+    <style>
+        body {
+            font - family: Arial, sans - serif;
+            text - align: center;
+            background - color: #f0f0f5;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            font - size: 36px;
+            margin - bottom: 30px;
+        }
+
+      .game - option {
+            background - color: white;
+            border: 1px solid #ccc;
+            border - radius: 10px;
+            box - shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            width: 40%;
+            margin: 20px auto;
+            cursor: pointer;
+            transition: transform 0.3s ease - in - out;
+        }
+
+      .game - option:hover {
+            transform: translateY(-5px);
+        }
+
+      .game - option h2 {
+            color: #333;
+            font - size: 24px;
+            margin - bottom: 10px;
+        }
+
+      .game - option p {
+            color: #666;
+            font - size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>游戏集</h1>
+    <div class="game - option" onclick="redirectToGame('https://starscell.github.io/Re - 01/index.html')">
+        <h2>猜数字</h2>
+        <p>尝试猜出1到100之间的随机数字。</p>
+    </div>
+    <div class="game - option" onclick="redirectToGame('https://starscell.github.io/Re - 01/new.html')">
+        <h2>石头剪刀布</h2>
+        <p>与电脑进行经典的石头剪刀布对决。</p>
+    </div>
+
+    <script>
+        function redirectToGame(url) {
+            window.location.href = url;
+        }
+    </script>
+</body>
+
+</html>
